@@ -15,6 +15,28 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/', 'HomeController@index');
-Route::get('/form', 'RegistrasiController@index');
-Route::post('/welcome', 'RegistrasiController@store');
+// Route::get('/', 'HomeController@index');
+// Route::get('/form', 'RegistrasiController@index');
+// Route::post('/welcome', 'RegistrasiController@store');
+
+Route::get('/master', function() {
+    return view('adminlte.master');
+});
+
+Route::get('/items', function() {
+    return view('items.index');
+});
+
+// Route::get('/items/create', function() {
+//     return view('items.create');
+// });
+
+
+//TUGAS LARAVEL 2
+Route::get('/', function() {
+    return view('adminlte.items.create');
+});
+
+Route::get('/data-tables', function() {
+    return view('adminlte.parsial.data');
+});
