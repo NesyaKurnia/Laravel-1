@@ -1,32 +1,31 @@
-@extends('adminlte.master')
+@extends ('adminlte.master')
+@section ('content')
 
-@section('content')
-        <div class="ml-3">
             <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Create New Post</h3>
+                <h3 class="card-title">Quick Example</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form role="form" action="/post" method="POST">
+              <form role="form" action="/pertanyaan" method="POST">
               @csrf
                 <div class="card-body">
                   <div class="form-group">
-                    <label for="title">Title</label>
-                    <input type="text" class="form-control" name="title" id="title" placeholder="Enter Title">
+                    <label for="inputPertanyaan">Pertanyaan</label>
+                    <input type="text" class="form-control" name="judul" id="judul" placeholder="Enter pertanyaan">
                     @error('judul')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                   </div>
                 
                   <div class="form-group">
-                    <label for="body">Isi Pertanyaan</label>
-                    <input type="text" class="form-control" name="body" id="body" placeholder="Body">
-                    @error('body')
+                    <label for="exampleInputPassword1">Isi Pertanyaan</label>
+                    <input type="text" class="form-control" name="isi" id="isi" placeholder="Enter isi pertanyaan">
+                    @error('isi')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                   </div>
-
+                
                 <!-- /.card-body -->
 
                 <div class="card-footer">
@@ -34,4 +33,6 @@
                 </div>
               </form>
             </div>
+
+
 @endsection

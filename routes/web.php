@@ -11,21 +11,21 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 // Route::get('/', 'HomeController@index');
 // Route::get('/form', 'RegistrasiController@index');
 // Route::post('/welcome', 'RegistrasiController@store');
 
-Route::get('/master', function() {
-    return view('adminlte.master');
-});
+// Route::get('/master', function() {
+//     return view('adminlte.master');
+// });
 
-Route::get('/items', function() {
-    return view('items.index');
-});
+// Route::get('/items', function() {
+//     return view('items.index');
+// });
 
 // Route::get('/items/create', function() {
 //     return view('items.create');
@@ -33,25 +33,19 @@ Route::get('/items', function() {
 
 
 //TUGAS LARAVEL 2
-Route::get('/', function() {
-    return view('adminlte.items.create');
-});
+// Route::get('/', function() {
+//     return view('adminlte.items.create');
+// });
 
-Route::get('/data-tables', function() {
-    return view('adminlte.parsial.data');
-});
+// Route::get('/data-tables', function() {
+//     return view('adminlte.parsial.data');
+// });
 
 //TUGAS CRUD
-Route::get('/post/create', 'PostController@create');
-
-Route::post('/post', 'PostController@store');
-
-Route::get('/post/create', 'PostController@index');
-
-Route::get('/post/{id}','PostController@show');
-
-Route::get('/post/{id}/edit','PostController@edit');
-
-Route::put('/post/{id}','PostController@update');
-
-Route::delete('/post/{id}','PostController@destroy');
+Route::get('/pertanyaan/create', 'PertanyaanController@create');
+Route::post('/pertanyaan', 'PertanyaanController@store');
+Route::get('/pertanyaan', 'PertanyaanController@index'); 
+Route::get('/pertanyaan/{pertanyaan_id}', 'PertanyaanController@show');
+Route::get('/pertanyaan/{pertanyaan_id}/edit', 'PertanyaanController@edit');
+Route::put('/pertanyaan/{pertanyaan_id}', 'PertanyaanController@update');
+Route::delete('/pertanyaan/{pertanyaan_id}', 'PertanyaanCOntroller@destroy');
