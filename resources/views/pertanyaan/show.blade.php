@@ -1,7 +1,7 @@
 @extends('adminlte.master')
 
 @section('content')
-<div class="ml-4 mt-4">
+<div class="ml-3 mt-3">
 <div class="card">
 <div class="card-body">
 <h4> {{ $posts->judul }} </h4>

@@ -2,18 +2,19 @@
 
 @section ('content')
 
-@if(session('success'))
-<div class="alert alert-success">
-{{ session('success')}}
-</div>
-@endif
-    <div class="mt-4 mr-4 m-4">
+    <div class="mt-3 ml-3 ">
             <div class="card">
-            <a class="btn btn-primary " href="/pertanyaan/create">Create New </a>
-              <div class="card-header">
+            <div class="card-header">
                 <h3 class="card-title">Tabel Pertanyaan</h3>
+            </div>
                 <!-- /.card-header -->
                 <div class="card-body">
+                @if(session('success'))
+                <div class="alert alert-success">
+                {{ session('success')}}
+                </div>
+                @endif
+                <a class="btn btn-primary mb-2" href="/pertanyaan/create">Create New </a>
                 <table class="table table-bordered">
                   <thead>                  
                     <tr>
@@ -24,26 +25,30 @@
                     </tr>
                   </thead>
                   <tbody>
-                    @foreach($pertanyaan as $key => $p)
+                    @forelse($post as $key => $p)
                         <tr>
                         <td> {{ $key + 1 }} </td>
                         <td> {{ $p->judul }} </td>
                         <td> {{ $p->isi  }}</td>
-                        <td> 
-                        <a href="/pertanyaan/show/{{ $p->id }}" class="btn btn-info btn-sn">Show</a><br><br>
-                            <a href="/pertanyaan/edit/{{ $p->id }}" class="btn btn-success">Edit</a><br><br>
-                            <form action="/pertanyaan/Hapus/{{ $p->id }}" method="POST">
+                        <td style="display: flex;"> 
+                        <a href="/pertanyaan/{{ $p->id }}" class="btn btn-info btn-sm">Show</a>
+                            <a href="/pertanyaan/{{ $p->id }}/edit" class="btn btn-default btn-sm">Edit</a>
+                            <form action="/pertanyaan/{{ $p->id }}" method="POST">
                             @csrf
-                            @method('delete')
-                            <input type="submit" value="Delete" class="btn btn-danger">
+                            @method('DELETE')
+                            <input type="submit" value="Delete" class="btn btn-danger btn-sm">
                             </form>
                         </tr>
-                    @endforeach
+                        @empty
+                        <tr>
+                        <td colspan="4" align="center"> No Posts </td>
+                        </tr>
+                    @endforelse
                   </tbody>
                 </table>
               </div>
-              <!-- /.card-body -->
-              <div class="card-footer">
+              <!-- .card-body --> 
+              <!-- <div class="card-footer">
                   <a href="/pertanyaan/create" action class="btn btn-info">Buat Pertanyaan Baru</a>
                 </div>
             </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PertanyaanController extends Controller
 {
@@ -14,11 +15,11 @@ class PertanyaanController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'judul' => 'required|max:255',
+            'judul' => 'required|max:255|unique:pertanyaan',
             'isi' => 'required',
         ]);
 
-        //dd(($request)->all());
+    //     dd(($request)->all());
         $query = DB::table('pertanyaan')->insert([
             "judul" => $request["judul"],
             "isi" => $request["isi"],
@@ -45,7 +46,7 @@ class PertanyaanController extends Controller
         return view('pertanyaan.edit', compact('posts'));
     }
 
-    public function update($id, request $request){
+    public function update($id, Request $request){
         $request->validate([
             'judul' => 'required',
             'isi'   => 'required'
@@ -57,7 +58,7 @@ class PertanyaanController extends Controller
                         'judul' => $request['judul'],
                         'isi'   => $request['isi']
                     ]);
-        return redirect('/pertanyaan')->with('success', 'Berhasil Update!');
+        return redirect('/pertanyaan')->with('success', 'Berhasil Update Pertanyaanmu!');
 
     }
 

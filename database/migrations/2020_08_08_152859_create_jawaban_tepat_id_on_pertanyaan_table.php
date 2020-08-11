@@ -13,7 +13,7 @@ class CreateJawabanTepatIdOnPertanyaanTable extends Migration
      */
     public function up()
     {
-        Schema::table('pertanyaan', function (Blueprint $table) {
+        Schema::table('jawaban_tepat_id)', function (Blueprint $table) {
             $table->unsignedBigInteger('jawaban_tepat_id')->nullable();
             $table->foreign('jawaban_tepat_id')->references('id')->on('jawaban');
         });
